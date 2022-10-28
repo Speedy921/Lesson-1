@@ -1,2 +1,3 @@
 # Lesson 1
-C# .Net prog basci
+C# .Net prog basics
+
