@@ -7,6 +7,11 @@ LocalVarDeclarations();
 DefaultDeclarations();
 NewingDataTypes();
 ObjectFunctionality();
+DatatypeFunctionality();
+CharFunctionality();
+ParseFromStrings();
+BooleanFunctionality();
+ParseFromStringsWithTryParse();
 
 static void LocalVarDeclarations()
 {
@@ -60,5 +65,82 @@ static void ObjectFunctionality()
     Console.WriteLine("12.Equals(23) = {0}", 12.Equals(23));
     Console.WriteLine("12.ToString() = {0}", 12.ToString());
     Console.WriteLine("12.GetType() = {0}", 12.GetType());
+    Console.WriteLine();
+}
+
+static void DatatypeFunctionality() //члены числовых типов данных Min Max
+{
+    Console.WriteLine("=>Data type Functionality:");
+    Console.WriteLine("Max of int:{0}", int.MaxValue);
+    Console.WriteLine("Min of int:{0}", int.MinValue);
+    Console.WriteLine("Max of double:{0}", double.MaxValue);
+    Console.WriteLine("Min of double:{0}", double.MinValue);
+    Console.WriteLine("double.Epsilon :{0}", double.Epsilon);
+    Console.WriteLine("double.PositiveInfinity:{0}", double.PositiveInfinity);
+    Console.WriteLine("double.NegativityInfinity:{0}", double.NegativeInfinity);
+    Console.WriteLine();
+}
+
+static void CharFunctionality() //члены System.Char, проверка является ли символ цифрой буквой, знаком пунктуации
+{
+    Console.WriteLine("=> cahr type Functionality:");
+    char myChar = 'a';
+    Console.WriteLine("char.IsDigit('a'):{0}", char.IsDigit(myChar));
+    Console.WriteLine("char.IsLetter('a'):{0}", char.IsLetter(myChar));
+    Console.WriteLine("char.IsWhiteSpace('Hello There, 5'): {0}", char.IsWhiteSpace("Hello There", 5));
+    Console.WriteLine("char.IsWhiteSpace('Hello There, 6'): {0}", char.IsWhiteSpace("Hello There", 6));
+    Console.WriteLine("char.IsPunctuation('?'):{0}", char.IsPunctuation('?'));
+    Console.WriteLine();
+        
+
+}
+
+static void ParseFromStrings()
+{
+    Console.WriteLine("=>Data type parsing:");
+    bool b = bool.Parse("True");
+    Console.WriteLine("Value of b: {0}", b); //вывод значения в
+    double d = double.Parse("99,884");
+    Console.WriteLine("Value of d: {0}", d); //вывод значения d
+    int i = int.Parse("8");
+    Console.WriteLine("Value of i: {0}", i); //вывод значения i
+    char c = char.Parse("w");
+    Console.WriteLine("Value of c: {0}", c); //вывод значения с
+    Console.WriteLine();
+
+}
+
+static void BooleanFunctionality()
+{
+    Console.WriteLine("=>Boolean Fuctionality:");// System.Boolean
+    Console.WriteLine("bool.FasleString: {0}", bool.FalseString);
+    Console.WriteLine("bool.TrueString: {0}", bool.TrueString);
+
+}
+
+static void ParseFromStringsWithTryParse()
+{
+    Console.WriteLine("=>Data type parsing with TryParse:");
+    if (bool.TryParse("True", out bool b))
+    {
+        Console.WriteLine("Value of b: {0}", b); //вывод значения b
+    }
+    else 
+    {
+        Console.WriteLine("Default value of b: {0}", b); // вывод стандартного значения b
+    }
+    string value = "Hello";
+    if (double.TryParse(value, out double d))
+    {
+        Console.WriteLine("Value of d:", d);
+    }
+    else
+    {
+        //преобразование выходного значения в дабл потерпело неудачу
+        // переменной было присвоено стандартное значение.
+        Console.WriteLine("Failed to convert the input ({0}) to a double and the variable was assigned the default {1}", value, d);
+
+    }
+
     Console.WriteLine();
 }
