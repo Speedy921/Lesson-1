@@ -1,6 +1,8 @@
 ﻿using System.Collections.Specialized;
 using System.Data;
 using System.Runtime.Intrinsics.X86;
+using System.Numerics;
+using System.Runtime.CompilerServices;
 
 Console.WriteLine("*****Fun with Basic Data Types**** \n");
 LocalVarDeclarations();
@@ -12,6 +14,8 @@ CharFunctionality();
 ParseFromStrings();
 BooleanFunctionality();
 ParseFromStringsWithTryParse();
+UseDatesAndTimes();
+UseBigInteger();
 
 static void LocalVarDeclarations()
 {
@@ -143,4 +147,36 @@ static void ParseFromStringsWithTryParse()
     }
 
     Console.WriteLine();
+}
+
+static void UseDatesAndTimes()
+{
+    Console.WriteLine("=> Dates and Times ");
+
+    //этот конструктор принимает год, месяц и день
+    DateTime dt = new DateTime(2015, 10, 17);
+
+    //какой это день месяца
+    Console.WriteLine("The day of {0} is {1}", dt.Date, dt.DayOfWeek);
+
+    //сейчас месяц декабрь
+    dt = dt.AddMonths(2);
+    Console.WriteLine("Daylight savings: {0}", dt.IsDaylightSavingTime());
+
+    //этот конструктор принимает часы, минуты и секунды
+    TimeSpan ts = new TimeSpan(4, 30, 0);
+
+    //вычесть 15 минут из текущего значения TimeSpan и вывести результат
+    Console.WriteLine(ts.Subtract(new TimeSpan(0,15,0)));
+}
+
+static void UseBigInteger()
+{
+    Console.WriteLine("=> Use BigInteger:");
+    BigInteger biggy = BigInteger.Parse("999999999999999999999999999999999999999999");
+    Console.WriteLine( "Value of biggy is {0}", biggy); //значение biggy
+    Console.WriteLine("Is biggy an even value?: {0}", biggy.IsEven); // biggy - четное?
+    Console.WriteLine("Is biggy a power of two?: {0}", biggy.IsPowerOfTwo); // biggy - степень 2?
+    BigInteger reallyBig = BigInteger.Multiply(biggy, BigInteger.Parse("8888888888888888888888888888888888888888888888888"));
+    Console.WriteLine("Valeue of reallyBig is {0}",reallyBig); // занчение reallyBig
 }
