@@ -16,6 +16,7 @@ BooleanFunctionality();
 ParseFromStringsWithTryParse();
 UseDatesAndTimes();
 UseBigInteger();
+BinaryLiterals();
 
 static void LocalVarDeclarations()
 {
@@ -180,3 +181,12 @@ static void UseBigInteger()
     BigInteger reallyBig = BigInteger.Multiply(biggy, BigInteger.Parse("8888888888888888888888888888888888888888888888888"));
     Console.WriteLine("Valeue of reallyBig is {0}",reallyBig); // занчение reallyBig
 }
+
+static void BinaryLiterals() //Двоичные литералы
+{
+    // Обновление в версии 7.2 двоичное значение модет начинатся с символа _
+    Console.WriteLine("Sixteen: {0}", 0b_0001_0000); //16
+    Console.WriteLine("Thirty Two: {0}", 0b_0010_0000); //32
+    Console.WriteLine("Sixty Four: {0}", 0b_0100_0000); //64
+}
+
